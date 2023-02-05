@@ -19,8 +19,8 @@ public class AbilityTranslatorService {
         String flavorText = "";
         for (AbilityFlavorText abilityFlavorText : ability.getFlavor_text_entries()) {
             if ((abilityFlavorText.getLanguage().getName().equals(language))
-                    && (abilityFlavorText.getVersion_group().getName().equals("sword-shield"))) {
-                flavorText = abilityFlavorText.getFlavor_text();
+                    && (abilityFlavorText.getVersionGroup().getName().equals("sword-shield"))) {
+                flavorText = abilityFlavorText.getFlavorText();
             }
         }
         return new AbilityTranslation(name, flavorText);

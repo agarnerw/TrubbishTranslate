@@ -1,6 +1,7 @@
 package com.agarnerw.trubbishtranslate.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AbilityFlavorText {
-    private String flavor_text;
+    @JsonProperty("flavor_text")
+    private String flavorText;
     private NamedAPIResource language;
-    private NamedAPIResource version_group;
+    @JsonProperty("version_group")
+    private NamedAPIResource versionGroup;
 }
