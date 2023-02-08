@@ -13,13 +13,10 @@ class AbilityTranslatorServiceTests {
     private AbilityTranslatorService abilityTranslatorService;
     @Test
     void givenAbilityAndLanguage_whenGetTranslation_thenAbilityTranslationReturned() {
-        // given
         Ability ability = AbilityBuilders.getDefaultAbility();
         String language = AbilityPresets.LANGUAGE;
-        // when
         AbilityTranslation abilityTranslation = abilityTranslatorService
                 .getTranslation(ability, language);
-        // then
         Assertions.assertInstanceOf(AbilityTranslation.class, abilityTranslation);
         Assertions.assertEquals(AbilityPresets.ABILITY_NAME, abilityTranslation.getName());
         Assertions.assertEquals(AbilityPresets.FLAVOR_TEXT, abilityTranslation.getFlavorText());
@@ -28,8 +25,10 @@ class AbilityTranslatorServiceTests {
     void givenAbilityAndWrongLanguage_whenGetTranslation_thenNoTranslationReturned() {
         Ability ability = AbilityBuilders.getDefaultAbility();
         String language = AbilityPresets.LANGUAGE;
+        String wrongLanguage = "Korean";
         AbilityTranslation abilityTranslation = abilityTranslatorService
-                .getTranslation(ability, "German");
+                .getTranslation(ability, wrongLanguage);
+        Assertions.assertInstanceOf(AbilityTranslation.class, abilityTranslation);
         Assertions.assertNotEquals(AbilityPresets.ABILITY_NAME, abilityTranslation.getName());
         Assertions.assertNotEquals(AbilityPresets.FLAVOR_TEXT, abilityTranslation.getFlavorText());
     }
