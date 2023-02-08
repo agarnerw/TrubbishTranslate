@@ -25,10 +25,7 @@ class AbilityTranslatorServiceTests {
     void givenAbilityAndWrongLanguage_whenGetTranslation_thenNoTranslationReturned() {
         Ability ability = AbilityBuilders.getDefaultAbility();
         String wrongLanguage = "Wooperian";
-        AbilityTranslation abilityTranslation = abilityTranslatorService
-                .getTranslation(ability, wrongLanguage);
-        Assertions.assertInstanceOf(AbilityTranslation.class, abilityTranslation);
-        Assertions.assertNotEquals(AbilityPresets.ABILITY_NAME, abilityTranslation.getName());
-        Assertions.assertNotEquals(AbilityPresets.FLAVOR_TEXT, abilityTranslation.getFlavorText());
+        Assertions.assertThrows(BadRequestException.class,
+                () -> {abilityTranslatorService.getTranslation(ability, wrongLanguage);});
     }
 }

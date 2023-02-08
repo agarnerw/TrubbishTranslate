@@ -1,9 +1,6 @@
 package com.agarnerw.trubbishtranslate;
 
-import com.agarnerw.trubbishtranslate.domain.Ability;
-import com.agarnerw.trubbishtranslate.domain.AbilityFlavorText;
-import com.agarnerw.trubbishtranslate.domain.AbilityTranslation;
-import com.agarnerw.trubbishtranslate.domain.Name;
+import com.agarnerw.trubbishtranslate.domain.*;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +19,9 @@ public class AbilityTranslatorService {
                     && (abilityFlavorText.getVersion_group().getName().equals("sword-shield"))) {
                 flavorText = abilityFlavorText.getFlavorText();
             }
+        }
+        if ((name == "")||(flavorText == "")) {
+            throw new BadRequestException("you botched something");
         }
         return new AbilityTranslation(name, flavorText);
     }
