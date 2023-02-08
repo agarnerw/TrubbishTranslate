@@ -24,8 +24,7 @@ class AbilityTranslatorServiceTests {
     @Test
     void givenAbilityAndWrongLanguage_whenGetTranslation_thenNoTranslationReturned() {
         Ability ability = AbilityBuilders.getDefaultAbility();
-        String language = AbilityPresets.LANGUAGE;
-        String wrongLanguage = "Korean";
+        String wrongLanguage = "Wooperian";
         AbilityTranslation abilityTranslation = abilityTranslatorService
                 .getTranslation(ability, wrongLanguage);
         Assertions.assertInstanceOf(AbilityTranslation.class, abilityTranslation);
