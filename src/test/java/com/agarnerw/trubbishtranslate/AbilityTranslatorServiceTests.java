@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 @SpringBootTest
-public class AbilityTranslatorServiceTests {
+class AbilityTranslatorServiceTests {
     @Autowired
     private AbilityTranslatorService abilityTranslatorService;
     @Test
@@ -23,5 +23,14 @@ public class AbilityTranslatorServiceTests {
         Assertions.assertInstanceOf(AbilityTranslation.class, abilityTranslation);
         Assertions.assertEquals(AbilityPresets.ABILITY_NAME, abilityTranslation.getName());
         Assertions.assertEquals(AbilityPresets.FLAVOR_TEXT, abilityTranslation.getFlavorText());
+    }
+    @Test
+    void givenAbilityAndWrongLanguage_whenGetTranslation_thenNoTranslationReturned() {
+        Ability ability = AbilityBuilders.getDefaultAbility();
+        String language = AbilityPresets.LANGUAGE;
+        AbilityTranslation abilityTranslation = abilityTranslatorService
+                .getTranslation(ability, "German");
+        Assertions.assertNotEquals(AbilityPresets.ABILITY_NAME, abilityTranslation.getName());
+        Assertions.assertNotEquals(AbilityPresets.FLAVOR_TEXT, abilityTranslation.getFlavorText());
     }
 }

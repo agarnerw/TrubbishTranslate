@@ -16,5 +16,5 @@ public class AbilityFlavorText {
     private String flavorText;
     private NamedAPIResource language;
     @JsonProperty("version_group")
-    private NamedAPIResource versionGroup;
+    private NamedAPIResource version_group;
 }

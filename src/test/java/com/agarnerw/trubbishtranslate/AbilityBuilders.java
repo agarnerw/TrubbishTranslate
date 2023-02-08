@@ -19,7 +19,7 @@ public class AbilityBuilders {
         AbilityFlavorText flavorText = AbilityFlavorText.builder()
                 .language(languageAPIResource)
                 .flavorText(AbilityPresets.FLAVOR_TEXT)
-                .versionGroup(versionAPIResource).build();
+                .version_group(versionAPIResource).build();
         Ability ability = Ability.builder()
                 .name(AbilityPresets.ABILITY_NAME)
                 .names(new Name[]{name})
