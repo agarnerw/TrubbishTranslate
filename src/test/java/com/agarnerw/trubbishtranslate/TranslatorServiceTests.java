@@ -6,17 +6,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
 @SpringBootTest
-class AbilityTranslatorServiceTests {
+class TranslatorServiceTests {
     @Autowired
-    private AbilityTranslatorService abilityTranslatorService;
+    private TranslatorService translatorService;
     @Test
     void givenAbilityAndLanguage_whenGetTranslation_thenAbilityTranslationReturned() {
         Ability ability = AbilityBuilders.getDefaultAbility();
         String language = AbilityPresets.LANGUAGE;
-        AbilityTranslation abilityTranslation = abilityTranslatorService
-                .getTranslation(ability, language);
+        AbilityTranslation abilityTranslation = translatorService
+                .getAbilityTranslation(ability, language);
         Assertions.assertInstanceOf(AbilityTranslation.class, abilityTranslation);
         Assertions.assertEquals(AbilityPresets.ABILITY_NAME, abilityTranslation.getName());
         Assertions.assertEquals(AbilityPresets.FLAVOR_TEXT, abilityTranslation.getFlavorText());
@@ -26,6 +25,7 @@ class AbilityTranslatorServiceTests {
         Ability ability = AbilityBuilders.getDefaultAbility();
         String wrongLanguage = "Wooperian";
         Assertions.assertThrows(BadRequestException.class,
-                () -> {abilityTranslatorService.getTranslation(ability, wrongLanguage);});
+                () -> {
+                    translatorService.getAbilityTranslation(ability, wrongLanguage);});
     }
 }

@@ -1,20 +1,16 @@
 package com.agarnerw.trubbishtranslate.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AbilityFlavorText {
-    @JsonProperty("flavor_text")
-    private String flavorText;
+public class VerboseEffect {
+    private String effect;
+    @JsonProperty("short_effect")
+    private String shortEffect;
     private NamedAPIResource language;
-    @JsonProperty("version_group")
-    private NamedAPIResource version_group;
 }

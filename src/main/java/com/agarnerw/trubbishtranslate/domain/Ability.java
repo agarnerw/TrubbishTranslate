@@ -6,14 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = false)
+@JsonIgnoreProperties
 public class Ability {
 private String name;
-private Name[] names;
-private AbilityFlavorText[] flavor_text_entries;
+private List<Name> names;
+private List<FlavorText> flavor_text_entries;
 
 }

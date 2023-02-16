@@ -1,7 +1,7 @@
 package com.agarnerw.trubbishtranslate;
 
 import com.agarnerw.trubbishtranslate.domain.Ability;
-import com.agarnerw.trubbishtranslate.domain.AbilityFlavorText;
+import com.agarnerw.trubbishtranslate.domain.FlavorText;
 import com.agarnerw.trubbishtranslate.domain.Name;
 import com.agarnerw.trubbishtranslate.domain.NamedAPIResource;
 
@@ -16,14 +16,14 @@ public class AbilityBuilders {
         Name name = Name.builder()
                 .language(languageAPIResource)
                 .name(AbilityPresets.ABILITY_NAME).build();
-        AbilityFlavorText flavorText = AbilityFlavorText.builder()
+        FlavorText flavorText = FlavorText.builder()
                 .language(languageAPIResource)
                 .flavorText(AbilityPresets.FLAVOR_TEXT)
                 .version_group(versionAPIResource).build();
         Ability ability = Ability.builder()
                 .name(AbilityPresets.ABILITY_NAME)
                 .names(new Name[]{name})
-                .flavor_text_entries(new AbilityFlavorText[]{flavorText}).build();
+                .flavor_text_entries(new FlavorText[]{flavorText}).build();
         return ability;
     }
 }

@@ -14,7 +14,7 @@ public class APIControllerTests {
     @MockBean
     PokeAPIClient pokeAPIClient;
     @MockBean
-    AbilityTranslatorService abilityTranslatorService;
+    TranslatorService translatorService;
 
     @Test
     void givenAbilityNameAndLanguage_whenGetAbility_thenGetAbilityCalled(){
@@ -28,8 +28,8 @@ public class APIControllerTests {
         Ability ability = AbilityBuilders.getDefaultAbility();
         Mockito.doReturn(ability).when(pokeAPIClient).getAbility(AbilityPresets.ABILITY_NAME);
         apiController.getAbility(AbilityPresets.ABILITY_NAME, AbilityPresets.LANGUAGE);
-        Mockito.verify(abilityTranslatorService, Mockito.times(1))
-                .getTranslation(ability, AbilityPresets.LANGUAGE);
+        Mockito.verify(translatorService, Mockito.times(1))
+                .getAbilityTranslation(ability, AbilityPresets.LANGUAGE);
 
     }
 }
